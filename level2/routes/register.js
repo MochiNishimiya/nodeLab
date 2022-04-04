@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res) {
   email = req.body.email;
 
-  let re = /.+@.*.cbjs.io$/;
+  let re = /.+@.+.cbjs.io$/;
   let ok = re.exec(email);
 
   // For debugging purpose only
