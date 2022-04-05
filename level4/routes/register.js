@@ -5,7 +5,7 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.render("register");
+  return res.sendFile(path.resolve(__dirname + '/../views/register.html'));
 });
 
 router.post('/', function(req, res) {
@@ -14,11 +14,8 @@ router.post('/', function(req, res) {
   let re = /.+@.+.cbjs.io/;
   let ok = re.exec(email);
 
-  // For debugging purpose only
-  // ok = 1;
-
   if (!ok) {
-    res.send('');
+    return res.send('Email không hợp lệ!');
   }
   else {
     username = email.split('@')[0];

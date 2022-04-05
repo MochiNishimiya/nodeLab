@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-    res.render("login");
+    return res.sendFile(path.resolve(__dirname + '/../views/login.html'));
 });
 
 router.post('/', function(req, res) {
@@ -12,11 +12,11 @@ router.post('/', function(req, res) {
 
     for (let i=0; i<global.usernameArr.length; i++) {
         if (username === global.usernameArr[i] && password === global.passwordArr[i]) {
-            res.send('Hi champ!');  // Get flag
+            return res.send('REDACTED');  // Get flag
         }
     }
 
-    res.send('Biến hacker!');
+    return res.send('Đăng nhập thất bại!');
 });
 
 module.exports = router;

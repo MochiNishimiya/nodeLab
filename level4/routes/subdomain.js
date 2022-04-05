@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.send('Not Implement!');
+  return res.send('Not Implement!');
 });
 
 module.exports = router;
