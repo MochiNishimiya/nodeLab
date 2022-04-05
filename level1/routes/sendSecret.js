@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res) {
   URL = req.body.URL;
 
-  let re = /.+@.+.cbjs.io$/;
+  let re = /^https:\/\/.*.cyberjutsu.io/;
   let ok = re.exec(URL);
 
   // For debugging purpose only

@@ -5,10 +5,14 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
-var sendSecretRouter = require('./routes/sendSecret');
+var registerRouter = require('./routes/register');
+var loginRouter = require('./routes/login');
 var subdomainRouter = require('./routes/subdomain');
 
 var app = express();
+
+global.usernameArr = [];
+global.passwordArr = [];
 
 // css purpose
 app.use(express.static(__dirname + '/public'));
@@ -24,7 +28,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/sendSecret', sendSecretRouter);
+app.use('/register', registerRouter);
+app.use('/login', loginRouter);
 app.use('/subdomain', subdomainRouter);
 
 // catch 404 and forward to error handler
