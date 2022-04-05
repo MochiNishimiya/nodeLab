@@ -18,7 +18,7 @@ router.post('/', function(req, res) {
   // ok = 1;
 
   if (!ok) {
-    res.send('Cút mấy thằng Hacker');
+    res.send('');
   }
   else {
     username = email.split('@')[0];
