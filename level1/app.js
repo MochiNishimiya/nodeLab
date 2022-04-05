@@ -25,5 +25,5 @@ app.use('/sendSecret', sendSecretRouter);
 app.use('/subdomain', subdomainRouter);
 
 app.listen(port, () => {
-  console.log(`[+] Running level2 on port ${port}, root: "${__dirname}"`);
+  console.log(`[+] Running level1 on port ${port}, root: "${__dirname}"`);
 });

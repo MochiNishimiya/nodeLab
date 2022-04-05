@@ -15,7 +15,6 @@ global.passwordArr = [];
 app.use(express.static(__dirname + '/public'));
 
 // view engine setup
-app.set('view engine', 'jade');
 app.set('views', path.join(__dirname, 'views'));
 
 app.use(morgan('dev'));
@@ -30,5 +29,5 @@ app.use('/login', loginRouter);
 app.use('/subdomain', subdomainRouter);
 
 app.listen(port, () => {
-  console.log(`[+] Running level1 on port ${port}, root: "${__dirname}"`);
+  console.log(`[+] Running level4 on port ${port}, root: "${__dirname}"`);
 });

@@ -1,11 +1,11 @@
 var express = require('express');
 var https = require('https');
 crypto = require("crypto");
+const path = require('path');
 var router = express.Router();
 
-/* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.render("sendSecret");
+  return res.sendFile(path.resolve(__dirname + '/../views/sendSecret.html'));
 });
 
 router.post('/', function(req, res) {
@@ -14,20 +14,17 @@ router.post('/', function(req, res) {
   let re = /^https:\/\/[^\/]*.cyberjutsu.io/;
   let ok = re.exec(URL);
 
-  // For debugging purpose only
-  // ok = 1;
-
   if (!ok) {
-    res.send('Cút mấy thằng Hacker');
+    res.send('URL không thuộc subdomain của Cyberjutsu.');
   } 
   else {
     let secret = "REDACTED";
     let request = URL + '/?token=' + secret;
     
     https.get(request, (resp) => {
-      res.send("Ok!");
+      return res.send("Ok!");
     }).on("error", (err) => {
-      res.send("Error!");
+      return res.send("Error!");
     });
   }
 });
