@@ -14,11 +14,11 @@ router.post('/', function(req, res) {
   username = req.body.username;
   password = req.body.password;
 
-  const re = new RegExp(`${username}`);
-  let ok = re.exec(password);
+  const re = /.+@.+\..+/;
+  let ok = re.exec(username);
 
-  if (ok) {
-    return res.send('Password không được chứa Username!');
+  if (!ok) {
+    return res.send('Username phải là một email hợp lệ!');
   }
   else {
     global.usernameArr.push(username);
