@@ -1,5 +1,6 @@
 <html>
     <head>    
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <title>Register</title>    
         <link rel="stylesheet" type="text/css" href="/stylesheets/register.css">    
     </head>    
@@ -8,8 +9,8 @@
 
         <div class="grid">
     
-        <form action="http://localhost:8080/register" method="POST" class="form login">
-    
+        <!-- <form action="http://localhost:8080/register" method="POST" class="form login" id="signup"> -->
+        <form action="http://localhost:8080/register" method="POST" class="form login" id="signup">    
             <div class="form__field">
                 <label for="login__username"><svg class="icon">
                     <use xlink:href="#icon-user"></use>
@@ -25,8 +26,21 @@
             </div>
 
             <div class="form__field">
-            <input type="submit" value="Sign In">
+                <input type="submit" value="Register"/>
             </div>
+
+            <script>
+                function uuidv4() {
+                    return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
+                        (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+                    );
+                }
+    
+                $('#signup').submit(function(eventObj) {
+                    $(this).append('<input type="hidden" name="uuid" value=' + uuidv4().toString() + ' /> ');
+                    return true;
+                });
+            </script>
     
         </form>
     

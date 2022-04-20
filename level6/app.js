@@ -12,8 +12,16 @@ const port = 8080;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Store global var and func
 global.usernameArr = [];
 global.passwordArr = [];
+global.userToSession = new Map();
+global.sessionMap = new Map();
+
+global.checkValid = function(session) {
+  let re = /^[a-z0-9-]{1,36}$/i;  // typo
+  return re.exec(session);
+}
 
 // css purpose
 app.use(express.static(__dirname + '/public'));
